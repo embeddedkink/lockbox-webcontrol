@@ -1,12 +1,12 @@
 <h1>test</h1>
 
-<div id="test">
-<button>The test button</button>
-</div>
+
+<button id="testbtn">The test button</button>
+
 
 <script>
     (document).ready(function () {
-        $("#test").click(function () {
+        $("#testbtn").click(function () {
             $.get("http://lockbox_530689.local:5000/status", function (data) {
                 console.log(data);
                 alert("Load was performed.");
