@@ -1,19 +1,16 @@
 <h1>test</h1>
 
 <div id="test">
-<button>Reset</button>
+<button>The test button</button>
 </div>
 
 <script>
-    $("document").ready(function(){
-    
-        $("#Reset").click(function(){
-        $.get( "http://lockbox_530689.local:5000/status", function( data ) {
-            $( ".result" ).html( data );
-            alert( "Load was performed." );
+    (document).ready(function () {
+        $("#test").click(function () {
+            $.get("http://lockbox_530689.local:5000/status", function (data) {
+                console.log(data);
+                alert("Load was performed.");
+            })
         });
     });
-
-
-    }); 
 </script>
