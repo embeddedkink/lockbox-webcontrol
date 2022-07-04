@@ -1,16 +1,31 @@
-<h1>test</h1>
+<h1>EKILB web control</h1>
 
+<label for="host">Host:</label>
+<input id="host" autocomplete="on">
+<label for="password">Password:</label>
+<input id="password">
 
-<button id="testbtn">The test button</button>
-
+<button onclick="lock()">Lock</button>
+<button onclick="unlock()">Unlock</button>
+<button onclick="getstatus()">Status</button>
 
 <script>
-    $(document).ready(function () {
-        $("#testbtn").click(function () {
-            $.get("http://lockbox_530689.local:5000/status", function (data) {
-                console.log(data);
-                alert("Load was performed.");
-            })
-        });
-    });
+    const xhttp = new XMLHttpRequest();
+    function getstatus(){
+    xhttp.open("GET", `${document.getElementById("host").value}/status`, false);
+    xhttp.send();
+    alert(xhttp.responseText);
+    }
+    function lock(){
+    xhttp.open("POST", `${document.getElementById("host").value}/lock`, false);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send(`password=${document.getElementById("password").value}`);
+    alert(xhttp.responseText);
+    }
+    function unlock(){
+    xhttp.open("POST", `${document.getElementById("host").value}/unlock`, false);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send(`password=${document.getElementById("password").value}`);
+    alert(xhttp.responseText);
+    }
 </script>
